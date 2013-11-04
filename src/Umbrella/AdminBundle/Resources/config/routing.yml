@@ -1,0 +1,7 @@
+admin:
+    pattern: /admin
+    defaults: { _controller: UmbrellaAdminBundle:SystemUsers:index }
+
+profile:
+    pattern: /profile
+    defaults: { _controller: UmbrellaAdminBundle:Profile:index }

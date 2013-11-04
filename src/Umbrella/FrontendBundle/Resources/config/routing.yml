@@ -1,0 +1,3 @@
+umbrella_frontend_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: UmbrellaFrontendBundle:Default:index }
