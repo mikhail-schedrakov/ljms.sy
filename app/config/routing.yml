@@ -1,8 +1,7 @@
-umbrella_admin:
-    resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
 umbrella_frontend:
     resource: "@UmbrellaFrontendBundle/Resources/config/routing.yml"
     prefix:   /
 
+umbrella_admin:
+    resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
+    prefix:   /

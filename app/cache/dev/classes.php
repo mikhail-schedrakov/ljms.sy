@@ -2782,7 +2782,7 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.14.0';
+const VERSION ='1.14.2';
 protected $charset;
 protected $loader;
 protected $debug;
@@ -3005,9 +3005,9 @@ public function setParser(Twig_ParserInterface $parser)
 {
 $this->parser = $parser;
 }
-public function parse(Twig_TokenStream $tokens)
+public function parse(Twig_TokenStream $stream)
 {
-return $this->getParser()->parse($tokens);
+return $this->getParser()->parse($stream);
 }
 public function getCompiler()
 {
@@ -3032,7 +3032,7 @@ return $this->compile($this->parse($this->tokenize($source, $name)));
 $e->setTemplateFile($name);
 throw $e;
 } catch (Exception $e) {
-throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the compilation of a template ("%s").', $e->getMessage()), -1, $name, $e);
+throw new Twig_Error_Syntax(sprintf('An exception has been thrown during the compilation of a template ("%s").', $e->getMessage()), -1, $name, $e);
 }
 }
 public function setLoader(Twig_LoaderInterface $loader)
@@ -3413,7 +3413,7 @@ throw new RuntimeException(sprintf("Unable to create the cache directory (%s).",
 } elseif (!is_writable($dir)) {
 throw new RuntimeException(sprintf("Unable to write in the cache directory (%s).", $dir));
 }
-$tmpFile = tempnam(dirname($file), basename($file));
+$tmpFile = tempnam($dir, basename($file));
 if (false !== @file_put_contents($tmpFile, $content)) {
 if (@rename($tmpFile, $file) || (@copy($tmpFile, $file) && unlink($tmpFile))) {
 @chmod($file, 0666 & ~umask());
@@ -3605,9 +3605,11 @@ new Twig_SimpleTest('even', null, array('node_class'=>'Twig_Node_Expression_Test
 new Twig_SimpleTest('odd', null, array('node_class'=>'Twig_Node_Expression_Test_Odd')),
 new Twig_SimpleTest('defined', null, array('node_class'=>'Twig_Node_Expression_Test_Defined')),
 new Twig_SimpleTest('sameas', null, array('node_class'=>'Twig_Node_Expression_Test_Sameas')),
+new Twig_SimpleTest('same as', null, array('node_class'=>'Twig_Node_Expression_Test_Sameas')),
 new Twig_SimpleTest('none', null, array('node_class'=>'Twig_Node_Expression_Test_Null')),
 new Twig_SimpleTest('null', null, array('node_class'=>'Twig_Node_Expression_Test_Null')),
 new Twig_SimpleTest('divisibleby', null, array('node_class'=>'Twig_Node_Expression_Test_Divisibleby')),
+new Twig_SimpleTest('divisible by', null, array('node_class'=>'Twig_Node_Expression_Test_Divisibleby')),
 new Twig_SimpleTest('constant', null, array('node_class'=>'Twig_Node_Expression_Test_Constant')),
 new Twig_SimpleTest('empty','twig_test_empty'),
 new Twig_SimpleTest('iterable','twig_test_iterable'),
@@ -3630,18 +3632,28 @@ public function parseTestExpression(Twig_Parser $parser, Twig_NodeInterface $nod
 {
 $stream = $parser->getStream();
 $name = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
+$class = $this->getTestNodeClass($parser, $name, $node->getLine());
 $arguments = null;
 if ($stream->test(Twig_Token::PUNCTUATION_TYPE,'(')) {
 $arguments = $parser->getExpressionParser()->parseArguments(true);
 }
-$class = $this->getTestNodeClass($parser, $name, $node->getLine());
 return new $class($node, $name, $arguments, $parser->getCurrentToken()->getLine());
 }
 protected function getTestNodeClass(Twig_Parser $parser, $name, $line)
 {
 $env = $parser->getEnvironment();
 $testMap = $env->getTests();
-if (!isset($testMap[$name])) {
+$testName = null;
+if (isset($testMap[$name])) {
+$testName = $name;
+} elseif ($parser->getStream()->test(Twig_Token::NAME_TYPE)) {
+$name = $name.' '.$parser->getCurrentToken()->getValue();
+if (isset($testMap[$name])) {
+$parser->getStream()->next();
+$testName = $name;
+}
+}
+if (null === $testName) {
 $message = sprintf('The test "%s" does not exist', $name);
 if ($alternatives = $env->computeAlternatives($name, array_keys($env->getTests()))) {
 $message = sprintf('%s. Did you mean "%s"', $message, implode('", "', $alternatives));
@@ -3727,12 +3739,14 @@ $defaultTimezone = new DateTimeZone($timezone);
 } else {
 $defaultTimezone = $timezone;
 }
-if ($date instanceof DateTime) {
-$date = clone $date;
+if ($date instanceof DateTime || $date instanceof DateTimeInterface) {
+$returningDate = new DateTime($date->format('c'));
 if (false !== $timezone) {
-$date->setTimezone($defaultTimezone);
+$returningDate->setTimezone($defaultTimezone);
+} else {
+$returningDate->setTimezone($date->getTimezone());
 }
-return $date;
+return $returningDate;
 }
 $asString = (string) $date;
 if (ctype_digit($asString) || (!empty($asString) &&'-'=== $asString[0] && ctype_digit(substr($asString, 1)))) {
@@ -4343,12 +4357,23 @@ throw new Twig_Error_Runtime(sprintf('The template has no parent and no traits d
 public function displayBlock($name, array $context, array $blocks = array())
 {
 $name = (string) $name;
+$template = null;
 if (isset($blocks[$name])) {
-$b = $blocks;
-unset($b[$name]);
-call_user_func($blocks[$name], $context, $b);
+$template = $blocks[$name][0];
+$block = $blocks[$name][1];
+unset($blocks[$name]);
 } elseif (isset($this->blocks[$name])) {
-call_user_func($this->blocks[$name], $context, $blocks);
+$template = $this->blocks[$name][0];
+$block = $this->blocks[$name][1];
+}
+if (null !== $template) {
+try {
+$template->$block($context, $blocks);
+} catch (Twig_Error $e) {
+throw $e;
+} catch (Exception $e) {
+throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $template->getTemplateName(), $e);
+}
 } elseif (false !== $parent = $this->getParent($context)) {
 $parent->displayBlock($name, $context, array_merge($this->blocks, $blocks));
 }
@@ -4409,7 +4434,7 @@ $e->guess();
 }
 throw $e;
 } catch (Exception $e) {
-throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, null, $e);
+throw new Twig_Error_Runtime(sprintf('An exception has been thrown during the rendering of a template ("%s").', $e->getMessage()), -1, $this->getTemplateName(), $e);
 }
 }
 abstract protected function doDisplay(array $context, array $blocks = array());

@@ -133,6 +133,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/frontend')) {
+            // index
+            if ($pathinfo === '/frontend') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'index',);
+            }
+
+            // about
+            if ($pathinfo === '/frontend/about') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::aboutAction',  '_route' => 'about',);
+            }
+
+            // sponsors
+            if ($pathinfo === '/frontend/sponsors') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::sponsorsAction',  '_route' => 'sponsors',);
+            }
+
+            // contact
+            if ($pathinfo === '/frontend/contact') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\ContactController::indexAction',  '_route' => 'contact',);
+            }
+
+        }
+
         // admin
         if ($pathinfo === '/admin') {
             return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\SystemUsersController::indexAction',  '_route' => 'admin',);
@@ -140,12 +163,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // profile
         if ($pathinfo === '/profile') {
-            return array (  '_controller' => 'UmbrellaAdminBundle:Profile:index',  '_route' => 'profile',);
-        }
-
-        // umbrella_frontend_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'umbrella_frontend_homepage')), array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\DefaultController::indexAction',));
+            return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\ProfileController::indexAction',  '_route' => 'profile',);
         }
 
         // _welcome

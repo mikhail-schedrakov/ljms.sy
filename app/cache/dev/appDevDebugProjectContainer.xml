@@ -16,8 +16,9 @@
       <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
-      <parameter key="UmbrellaFrontendBundle">Umbrella\FrontendBundle\UmbrellaFrontendBundle</parameter>
       <parameter key="UmbrellaAdminBundle">Umbrella\AdminBundle\UmbrellaAdminBundle</parameter>
+      <parameter key="UmbrellaFrontendBundle">Umbrella\FrontendBundle\UmbrellaFrontendBundle</parameter>
+      <parameter key="EWZRecaptchaBundle">EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -300,6 +301,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception:showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>EWZRecaptchaBundle:Form:ewz_recaptcha_widget.html.twig</parameter>
     </parameter>
     <parameter key="debug.templating.engine.twig.class">Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine</parameter>
     <parameter key="twig.options" type="collection">
@@ -474,6 +476,13 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
+    <parameter key="ewz_recaptcha.form.type.class">EWZ\Bundle\RecaptchaBundle\Form\Type\RecaptchaType</parameter>
+    <parameter key="ewz_recaptcha.validator.true.class">EWZ\Bundle\RecaptchaBundle\Validator\Constraints\TrueValidator</parameter>
+    <parameter key="ewz_recaptcha.public_key">6Lfi7ecSAAAAAIHswK6hUZXIn55BZ1PjD25j7Q8Q</parameter>
+    <parameter key="ewz_recaptcha.private_key">6Lfi7ecSAAAAAH7OuPcEZCLknShcMvJr-1D2i-uM</parameter>
+    <parameter key="ewz_recaptcha.secure">false</parameter>
+    <parameter key="ewz_recaptcha.locale_key">kernel.default_locale</parameter>
+    <parameter key="ewz_recaptcha.enabled">true</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -1055,6 +1064,7 @@
               <argument key="reset">form.type.reset</argument>
               <argument key="currency">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
+              <argument key="ewz_recaptcha">ewz_recaptcha.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -1281,6 +1291,7 @@
           <argument type="collection">
             <argument key="security.validator.user_password">security.validator.user_password</argument>
             <argument key="doctrine.orm.validator.unique">doctrine.orm.validator.unique</argument>
+            <argument key="ewz_recaptcha.true">ewz_recaptcha.validator.true</argument>
           </argument>
         </service>
       </argument>
@@ -1965,6 +1976,7 @@
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
                       <argument>form_div_layout.html.twig</argument>
+                      <argument>EWZRecaptchaBundle:Form:ewz_recaptcha_widget.html.twig</argument>
                     </argument>
                   </service>
                 </argument>
@@ -2305,6 +2317,14 @@
     <service id="sensio_framework_extra.cache.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\CacheListener">
       <tag name="kernel.event_subscriber"/>
     </service>
+    <service id="ewz_recaptcha.form.type" class="EWZ\Bundle\RecaptchaBundle\Form\Type\RecaptchaType">
+      <tag name="form.type" alias="ewz_recaptcha"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="ewz_recaptcha.validator.true" class="EWZ\Bundle\RecaptchaBundle\Validator\Constraints\TrueValidator">
+      <tag name="validator.constraint_validator" alias="ewz_recaptcha.true"/>
+      <argument type="service" id="service_container"/>
+    </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="twig.loader"/>
@@ -2631,12 +2651,16 @@
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
+        <argument>/home/mikhail/lamp/ljms.sy/src/Umbrella/AdminBundle/Resources/views</argument>
+        <argument>UmbrellaAdmin</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/mikhail/lamp/ljms.sy/src/Umbrella/FrontendBundle/Resources/views</argument>
         <argument>UmbrellaFrontend</argument>
       </call>
       <call method="addPath">
-        <argument>/home/mikhail/lamp/ljms.sy/src/Umbrella/AdminBundle/Resources/views</argument>
-        <argument>UmbrellaAdmin</argument>
+        <argument>/home/mikhail/lamp/ljms.sy/vendor/excelwebzone/recaptcha-bundle/EWZ/Bundle/RecaptchaBundle/Resources/views</argument>
+        <argument>EWZRecaptcha</argument>
       </call>
       <call method="addPath">
         <argument>/home/mikhail/lamp/ljms.sy/src/Acme/DemoBundle/Resources/views</argument>

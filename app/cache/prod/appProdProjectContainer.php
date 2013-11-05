@@ -984,6 +984,8 @@ class appProdProjectContainer extends Container
         $instance->addPath('/home/mikhail/lamp/ljms.sy/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
         $instance->addPath('/home/mikhail/lamp/ljms.sy/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/views', 'Swiftmailer');
         $instance->addPath('/home/mikhail/lamp/ljms.sy/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
+        $instance->addPath('/home/mikhail/lamp/ljms.sy/src/Umbrella/AdminBundle/Resources/views', 'UmbrellaAdmin');
+        $instance->addPath('/home/mikhail/lamp/ljms.sy/src/Umbrella/FrontendBundle/Resources/views', 'UmbrellaFrontend');
         $instance->addPath('/home/mikhail/lamp/ljms.sy/app/Resources/views');
         $instance->addPath('/home/mikhail/lamp/ljms.sy/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
         return $instance;
@@ -1103,6 +1105,8 @@ class appProdProjectContainer extends Container
                 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle',
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
+                'UmbrellaAdminBundle' => 'Umbrella\\AdminBundle\\UmbrellaAdminBundle',
+                'UmbrellaFrontendBundle' => 'Umbrella\\FrontendBundle\\UmbrellaFrontendBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdProjectContainer',

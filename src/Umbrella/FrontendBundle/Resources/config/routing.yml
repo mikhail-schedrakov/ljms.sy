@@ -1,3 +1,15 @@
-umbrella_frontend_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: UmbrellaFrontendBundle:Default:index }
+index:
+    pattern: /frontend
+    defaults: { _controller: UmbrellaFrontendBundle:StaticPage:index }
+
+about:
+    pattern: /frontend/about
+    defaults: { _controller: UmbrellaFrontendBundle:StaticPage:about }
+
+sponsors:
+    pattern: /frontend/sponsors
+    defaults: { _controller: UmbrellaFrontendBundle:StaticPage:sponsors }
+
+contact:
+    pattern: /frontend/contact
+    defaults: { _controller: UmbrellaFrontendBundle:Contact:index }
