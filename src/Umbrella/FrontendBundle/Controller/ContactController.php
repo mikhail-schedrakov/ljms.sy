@@ -55,7 +55,7 @@ class ContactController extends Controller
             ->add('email', 'email', $constraints['email'])
             ->add('subject', 'text', $constraints['subject'])
             ->add('message', 'textarea', $constraints['message'])
-            ->add('recaptcha', 'ewz_recaptcha')
+            ->add('recaptcha', 'ewz_recaptcha', $constraints['recaptcha'])
             ->add('send', 'submit')
             ->getForm();
 
