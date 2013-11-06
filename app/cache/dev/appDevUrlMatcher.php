@@ -134,9 +134,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/frontend')) {
-            // index
+            // home
             if ($pathinfo === '/frontend') {
-                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'index',);
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'home',);
             }
 
             // about

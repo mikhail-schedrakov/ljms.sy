@@ -1,4 +1,4 @@
-index:
+home:
     pattern: /frontend
     defaults: { _controller: UmbrellaFrontendBundle:StaticPage:index }
 

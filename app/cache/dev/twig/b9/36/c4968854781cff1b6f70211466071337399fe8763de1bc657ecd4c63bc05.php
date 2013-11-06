@@ -33,16 +33,15 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
         $this->displayBlock('meta', $context, $blocks);
         // line 11
         echo "
-
         ";
-        // line 13
+        // line 12
         $this->displayBlock('link', $context, $blocks);
-        // line 17
+        // line 16
         echo "
         ";
-        // line 18
+        // line 17
         $this->displayBlock('script', $context, $blocks);
-        // line 21
+        // line 20
         echo "        
     </head>
 
@@ -52,36 +51,36 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
         <div class=\"container\">
 
             ";
-        // line 29
+        // line 28
         $this->displayBlock('header', $context, $blocks);
-        // line 56
+        // line 52
         echo "
             <!-- Content Starts -->
             <div id=\"content\">
 
                 <!--Left Starts ------------------------------------------------------------------------------------------------------------------- -->
                 ";
-        // line 61
+        // line 57
         $this->displayBlock('leftbar', $context, $blocks);
-        // line 88
+        // line 84
         echo "                <!--Left Ends ------------------------------------------------------------------------------------------------------------------- -->
 
                 <!--Middle Starts --------------------------------------------------------------------------------------------------------------- -->
                 
                 <div id=\"content_area\">
 \t                ";
-        // line 93
+        // line 89
         $this->displayBlock('content', $context, $blocks);
-        // line 96
+        // line 92
         echo "                </div>
 
                 <!--Middle Ends ---------------------------------------------------------------------------------------------------------------- -->
 
                 <!--Right Starts --------------------------------------------------------------------------------------------------------------- -->
                 ";
-        // line 101
+        // line 97
         $this->displayBlock('rigthbar', $context, $blocks);
-        // line 121
+        // line 117
         echo "                <!--Right Ends -------------------------------------------------------------------------------------------------------------------- -->
                 <div style=\"clear:both\">
                 </div>
@@ -90,9 +89,9 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
 
             <!--Footer Starts-->
             ";
-        // line 128
+        // line 124
         $this->displayBlock('footer', $context, $blocks);
-        // line 146
+        // line 139
         echo "            <!--Footer Ends-->
         </div>
         <!--Container Ends-->
@@ -111,43 +110,43 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
         ";
     }
 
-    // line 13
+    // line 12
     public function block_link($context, array $blocks = array())
     {
-        // line 14
+        // line 13
         echo "\t        <link href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/css/reset.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
 \t        <link href=\"";
-        // line 15
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/css/style.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
         ";
     }
 
-    // line 18
+    // line 17
     public function block_script($context, array $blocks = array())
     {
-        // line 19
+        // line 18
         echo "            <link href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/js/jquery-2.0.3.js"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
         ";
     }
 
-    // line 29
+    // line 28
     public function block_header($context, array $blocks = array())
     {
-        // line 30
+        // line 29
         echo "\t            <!--Header Starts-->
 \t            <div id=\"header\" class=\"no_print\">
 \t                <div id=\"logo\">
 \t                    <a href=\"";
-        // line 33
-        echo $this->env->getExtension('routing')->getPath("index");
+        // line 32
+        echo $this->env->getExtension('routing')->getPath("home");
         echo "\">
 \t                        <img src=\"";
-        // line 34
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/images/logo.jpg"), "html", null, true);
         echo "\" alt=\"\" border=\"0\"  />
 \t                    </a>
@@ -155,28 +154,25 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
 \t                <div id=\"head02\">
 \t                    <div id=\"top_links\">
 \t                        <a href=\"";
+        // line 38
+        echo $this->env->getExtension('routing')->getPath("home");
+        echo "\">Home</a>|
+\t                        <a href=\"";
         // line 39
-        echo $this->env->getExtension('routing')->getPath("index");
-        echo "\">Home</a>
-\t                        |
+        echo $this->env->getExtension('routing')->getPath("about");
+        echo "\">About</a>|
+\t                        <a href=\"";
+        // line 40
+        echo $this->env->getExtension('routing')->getPath("sponsors");
+        echo "\">Sponsors</a>|
 \t                        <a href=\"";
         // line 41
-        echo $this->env->getExtension('routing')->getPath("about");
-        echo "\">About</a>
-\t                        |
-\t                        <a href=\"";
-        // line 43
-        echo $this->env->getExtension('routing')->getPath("sponsors");
-        echo "\">Sponsors</a>
-\t                        |
-\t                        <a href=\"";
-        // line 45
         echo $this->env->getExtension('routing')->getPath("contact");
         echo "\">Contact</a>
 \t                    </div>
 \t                    <div id=\"joinus\">
 \t                    ";
-        // line 49
+        // line 45
         echo "\t                    </div>
 \t                </div>
 \t                <div id=\"head03\">
@@ -186,15 +182,15 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
             ";
     }
 
-    // line 61
+    // line 57
     public function block_leftbar($context, array $blocks = array())
     {
-        // line 62
+        // line 58
         echo "                <div id=\"left\" class=\"no_print\">
                     <div id=\"division1\">
                         <div id=\"div_heading\">                         
                             <img src=\"";
-        // line 65
+        // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/images/division.gif"), "html", null, true);
         echo "\" alt=\"\" />
                         </div>
@@ -211,11 +207,11 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
                         </div>
                         <div id= \"prev\">
                             ";
-        // line 80
+        // line 76
         echo "                        </div>
                         <div id= \"next\">
                             ";
-        // line 83
+        // line 79
         echo "                        </div>
                     </div>
                     <!-- *********Calendar end******** -->
@@ -223,26 +219,26 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
                 ";
     }
 
-    // line 93
+    // line 89
     public function block_content($context, array $blocks = array())
     {
-        // line 94
+        // line 90
         echo "\t                \tMiddle block.
 \t                ";
     }
 
-    // line 101
+    // line 97
     public function block_rigthbar($context, array $blocks = array())
     {
-        // line 102
+        // line 98
         echo "\t                <div id=\"right\">
 \t                    <div id=\"announcement_box\">                        
 \t                        <div id=\"announce_head\"><img src=\"";
-        // line 104
+        // line 100
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/images/announce.gif"), "html", null, true);
         echo "\" alt=\"\" /></div>\t                        
 \t                        <div id=\"announce_img\"><img src=\"";
-        // line 105
+        // line 101
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/umbrellafrontend/images/announce_img.gif"), "html", null, true);
         echo "\" alt=\"\" /></div>
 \t                        <div id=\"announce_txt\">
@@ -262,29 +258,29 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
                 ";
     }
 
-    // line 128
+    // line 124
     public function block_footer($context, array $blocks = array())
     {
-        // line 129
+        // line 125
         echo "            <div id=\"footer\" class=\"no_print\">
                 <div class=\"footer_contents\">
                     <div class=\"footer_links\">
                         <a href=\"";
-        // line 132
-        echo $this->env->getExtension('routing')->getPath("index");
-        echo "\">Home</a>
-                        |
+        // line 128
+        echo $this->env->getExtension('routing')->getPath("home");
+        echo "\">Home</a>|
                         <a href=\"";
-        // line 134
+        // line 129
         echo $this->env->getExtension('routing')->getPath("about");
-        echo "\">About</a>
-                        |
+        echo "\">About</a>|
                         <a href=\"";
-        // line 136
+        // line 130
         echo $this->env->getExtension('routing')->getPath("sponsors");
-        echo "\">Sponsors</a>
-                        |
-                        <a href=\"\">Contact</a>
+        echo "\">Sponsors</a>|
+                        <a href=\"";
+        // line 131
+        echo $this->env->getExtension('routing')->getPath("contact");
+        echo "\">Contact</a>
                     </div>
                     <div class=\"copyright\">
                         Copyright 2008 Lockport Junior Miss Softball
@@ -301,6 +297,6 @@ class __TwigTemplate_b936c4968854781cff1b6f70211466071337399fe8763de1bc657ecd4c6
 
     public function getDebugInfo()
     {
-        return array (  284 => 136,  279 => 134,  274 => 132,  269 => 129,  266 => 128,  246 => 105,  242 => 104,  238 => 102,  235 => 101,  230 => 94,  227 => 93,  219 => 83,  215 => 80,  198 => 65,  193 => 62,  190 => 61,  180 => 49,  174 => 45,  169 => 43,  164 => 41,  159 => 39,  151 => 34,  147 => 33,  142 => 30,  139 => 29,  132 => 19,  129 => 18,  123 => 15,  118 => 14,  115 => 13,  107 => 6,  96 => 146,  94 => 128,  83 => 101,  76 => 96,  74 => 93,  67 => 88,  65 => 61,  58 => 56,  56 => 29,  44 => 18,  41 => 17,  39 => 13,  35 => 11,  27 => 1,  127 => 68,  121 => 65,  116 => 62,  111 => 59,  104 => 5,  100 => 53,  97 => 51,  92 => 48,  85 => 121,  81 => 42,  78 => 40,  73 => 37,  66 => 33,  62 => 31,  57 => 26,  50 => 22,  46 => 21,  33 => 5,  30 => 7,  25 => 4,);
+        return array (  282 => 131,  278 => 130,  274 => 129,  270 => 128,  265 => 125,  262 => 124,  242 => 101,  238 => 100,  234 => 98,  231 => 97,  226 => 90,  223 => 89,  215 => 79,  211 => 76,  194 => 61,  189 => 58,  186 => 57,  176 => 45,  170 => 41,  166 => 40,  162 => 39,  158 => 38,  150 => 33,  146 => 32,  141 => 29,  138 => 28,  131 => 18,  128 => 17,  122 => 14,  117 => 13,  114 => 12,  106 => 6,  103 => 5,  95 => 139,  93 => 124,  84 => 117,  82 => 97,  75 => 92,  73 => 89,  66 => 84,  64 => 57,  57 => 52,  55 => 28,  45 => 20,  43 => 17,  40 => 16,  38 => 12,  35 => 11,  33 => 5,  27 => 1,);
     }
 }
