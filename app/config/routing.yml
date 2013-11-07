@@ -1,7 +1,11 @@
+umbrella_auth:
+    resource: "@UmbrellaAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
 umbrella_frontend:
     resource: "@UmbrellaFrontendBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /frontend
 
 umbrella_admin:
     resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin

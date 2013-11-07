@@ -1,0 +1,7 @@
+parameters:
+#    umbrella_auth.example.class: Umbrella\AuthBundle\Example
+
+services:
+#    umbrella_auth.example:
+#        class: %umbrella_auth.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Umbrella\AdminBundle\UmbrellaAdminBundle(),
             new Umbrella\FrontendBundle\UmbrellaFrontendBundle(),
             new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
+            new Umbrella\AuthBundle\UmbrellaAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

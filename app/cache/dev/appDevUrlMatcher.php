@@ -133,9 +133,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'Umbrella\\AuthBundle\\Controller\\AuthController::loginAction',  '_route' => 'login',);
+                }
+
+                // login_check
+                if ($pathinfo === '/login_check') {
+                    return array('_route' => 'login_check');
+                }
+
+            }
+
+            // logout
+            if ($pathinfo === '/logout') {
+                return array('_route' => 'logout');
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/frontend')) {
             // home
-            if ($pathinfo === '/frontend') {
+            if ($pathinfo === '/frontend/home') {
                 return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'home',);
             }
 
@@ -154,16 +175,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\ContactController::indexAction',  '_route' => 'contact',);
             }
 
+            // auth
+            if ($pathinfo === '/frontend/auth') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\AuthController::indexAction',  '_route' => 'auth',);
+            }
+
         }
 
-        // admin
-        if ($pathinfo === '/admin') {
-            return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\SystemUsersController::indexAction',  '_route' => 'admin',);
-        }
+        if (0 === strpos($pathinfo, '/admin')) {
+            // system_users
+            if ($pathinfo === '/admin/system_users') {
+                return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\SystemUsersController::indexAction',  '_route' => 'system_users',);
+            }
 
-        // profile
-        if ($pathinfo === '/profile') {
-            return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\ProfileController::indexAction',  '_route' => 'profile',);
+            // profile
+            if ($pathinfo === '/admin/profile') {
+                return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\ProfileController::indexAction',  '_route' => 'profile',);
+            }
+
         }
 
         // _welcome

@@ -1,5 +1,5 @@
-admin:
-    pattern: /admin
+system_users:
+    pattern: /system_users
     defaults: { _controller: UmbrellaAdminBundle:SystemUsers:index }
 
 profile:

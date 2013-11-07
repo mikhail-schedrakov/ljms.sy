@@ -4,21 +4,21 @@ namespace Umbrella\AdminBundle\Entity;
 
 class Profile
 {
-	private $profileID;
+	protected $profileID;
 
-	private $email;
+	protected $email;
 
-	private $password;
+	protected $password;
 
-	private $firstName;
+	protected $firstName;
 
-	private $lastName;
+	protected $lastName;
 
-	private $homePhone;
+	protected $homePhone;
 
-	private $cellPhone;
+	protected $cellPhone;
 
-	private $altPhone;
+	protected $altPhone;
 
     /**
      * Get profileID

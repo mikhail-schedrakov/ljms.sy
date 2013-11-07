@@ -26,9 +26,9 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $pathinfo = rawurldecode($pathinfo);
 
         if (0 === strpos($pathinfo, '/frontend')) {
-            // index
+            // home
             if ($pathinfo === '/frontend') {
-                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'index',);
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\StaticPageController::indexAction',  '_route' => 'home',);
             }
 
             // about
@@ -46,16 +46,24 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\ContactController::indexAction',  '_route' => 'contact',);
             }
 
+            // auth
+            if ($pathinfo === '/frontend/auth') {
+                return array (  '_controller' => 'Umbrella\\FrontendBundle\\Controller\\AuthController::indexAction',  '_route' => 'auth',);
+            }
+
         }
 
-        // admin
-        if ($pathinfo === '/admin') {
-            return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\SystemUsersController::indexAction',  '_route' => 'admin',);
-        }
+        if (0 === strpos($pathinfo, '/admin')) {
+            // system_users
+            if ($pathinfo === '/admin/system_users') {
+                return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\SystemUsersController::indexAction',  '_route' => 'system_users',);
+            }
 
-        // profile
-        if ($pathinfo === '/profile') {
-            return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\ProfileController::indexAction',  '_route' => 'profile',);
+            // profile
+            if ($pathinfo === '/admin/profile') {
+                return array (  '_controller' => 'Umbrella\\AdminBundle\\Controller\\ProfileController::indexAction',  '_route' => 'profile',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

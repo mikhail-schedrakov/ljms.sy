@@ -21,6 +21,8 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+        // line 4
+        $this->env->getExtension('form')->renderer->setTheme($this->getContext($context, "form_profile"), array(0 => "UmbrellaAdminBundle:Form:fields.html.twig"));
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -42,13 +44,13 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 <label>First Name *</label>      
                 ";
         // line 18
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "firstName"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "firstName"), 'widget', array("required" => false));
         echo "
             </div>
             <div class=\"message_container\">
                 ";
         // line 21
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "firstName"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "firstName"), 'errors');
         echo "
             </div>
 
@@ -58,13 +60,13 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 <label>Last Name * </label>
                 ";
         // line 27
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "lastName"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "lastName"), 'widget', array("required" => false));
         echo "
             </div>
             <div class=\"message_container\">                
                 ";
         // line 30
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "lastName"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "lastName"), 'errors');
         echo "              
             </div>
 
@@ -74,13 +76,13 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 <label>Email *</label>
                 ";
         // line 36
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "email"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "email"), 'widget', array("required" => false));
         echo "
             </div>
             <div class=\"message_container\">
                 ";
         // line 39
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "email"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "email"), 'errors');
         echo "
             </div>
 
@@ -90,13 +92,13 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 <label>Home Phone *</label>
                 ";
         // line 45
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "homePhone"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "homePhone"), 'widget', array("required" => false));
         echo "
             </div>
             <div class=\"message_container\">
                 ";
         // line 48
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "homePhone"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "homePhone"), 'errors');
         echo "
             </div>
 
@@ -106,13 +108,13 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 <label>Cell Phone *</label>
                 ";
         // line 54
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "cellPhone"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "cellPhone"), 'widget', array("required" => false));
         echo "
             </div>
             <div class=\"message_container\">
                 ";
         // line 57
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "cellPhone"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "cellPhone"), 'errors');
         echo "
             </div>
 
@@ -123,22 +125,23 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                     <label>Password *</label>
                     ";
         // line 64
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "password"), 'widget', array("required" => ""));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "form_profile"), "password"), "first"), 'widget', array("required" => false));
         echo "
                     <div class=\"message_container\">
                     \t";
         // line 66
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "password"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "password"), 'errors');
         echo "
                \t\t </div>
-                </div>
-                <div class=\"edit_container\">
                     <label>Confirm Password *</label>
-                    <input type=\"password\" id=\"confirmPassword\" name=\"confirm_password\" />
+                    ";
+        // line 69
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "form_profile"), "password"), "second"), 'widget', array("required" => false));
+        echo "
                     <div class=\"message_container\">
 \t                    ";
-        // line 73
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "formProfile"), "password"), 'errors');
+        // line 71
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "password"), 'errors');
         echo "
 \t                </div>
                 </div>
@@ -147,13 +150,21 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                 </div>
             </div>
             <br>
-            <input type=\"submit\" id=\"update\" name=\"update\" class=\"button\" value=\"Save\" style=\"position:relative; left:30px;\" />
+            ";
+        // line 79
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "save"), 'widget', array("required" => false, "attr" => array("class" => "button", "style" => "position:relative; left:30px;")));
+        echo "
+            ";
+        // line 80
+        echo         $this->env->getExtension('form')->renderer->renderBlock($this->getContext($context, "form_profile"), 'form_end');
+        echo "            
         </form>
     </div>
 
     <div style=\"text-align:right;\">
         <a href=\"\" class=\"button\">Back</a>
     </div>
+
 ";
     }
 
@@ -169,6 +180,6 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
 
     public function getDebugInfo()
     {
-        return array (  141 => 73,  131 => 66,  126 => 64,  121 => 61,  115 => 57,  109 => 54,  105 => 52,  99 => 48,  93 => 45,  89 => 43,  83 => 39,  77 => 36,  73 => 34,  67 => 30,  61 => 27,  57 => 25,  51 => 21,  45 => 18,  41 => 16,  31 => 7,  28 => 6,);
+        return array (  159 => 80,  155 => 79,  144 => 71,  139 => 69,  133 => 66,  128 => 64,  123 => 61,  117 => 57,  111 => 54,  107 => 52,  101 => 48,  95 => 45,  91 => 43,  85 => 39,  79 => 36,  75 => 34,  69 => 30,  63 => 27,  59 => 25,  53 => 21,  47 => 18,  43 => 16,  33 => 7,  30 => 6,  25 => 4,);
     }
 }

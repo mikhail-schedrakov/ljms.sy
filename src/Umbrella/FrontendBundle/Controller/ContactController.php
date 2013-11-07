@@ -1,4 +1,5 @@
 <?php
+
 namespace Umbrella\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,7 +10,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True;
 
-/*
+/**
  * ContactController - show contact page.
  * At first preparings field and validation roles of form.
  * Then view page and valid form. If from valid, then send email.
@@ -24,7 +25,7 @@ class ContactController extends Controller
     {
         // Create contact from
         $form = $this->buildForm();
-
+        
         // Handling request from contacts page
         $form->handleRequest($request);  
 
@@ -32,17 +33,17 @@ class ContactController extends Controller
         if (! $form->isValid())
         {
             // Render contacts page whidth  valid errors   
-            $content = $this->renderView('UmbrellaFrontendBundle:Pages:contact.html.twig', array('form_contact' => $form->createView()));
-
-            return new Response($content);
+            $content = $this->renderView('UmbrellaFrontendBundle:Pages:contact.html.twig', array(
+                'form_contact' => $form->createView()
+            ));
         }
         else
         {   
             // Send email
             $content = 'email send';
-
-            return new Response($content);
         }
+
+        return new Response($content);
     }
 
     private function buildForm()

@@ -439,13 +439,17 @@ a.button:visited {
  }
 
 .message_container {
-    width : 350px;
-    margin : 5px auto;
-    padding : 5px;
-    text-align : center;
+    font-size: 13px;
+    width : 420px;
+    margin : 5px;
+    text-align : left;
     color : red;
     clear : both;
- }
+}
+
+.message_container p {
+    padding-left: 226px;
+}
 
 .del_role_button {
     text-decoration : none;

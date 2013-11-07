@@ -6,33 +6,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Umbrella\AdminBundle\Entity\Profile;
+use Umbrella\AdminBundle\Form\ProfileForm;
 
 class ProfileController extends Controller
 {
     public function indexAction(Request $request)
     {
+        // New Profile object       
         $profile = new Profile();
 
-        $profile->setEmail('test1');
-        $profile->setPassword('test2');
-        $profile->setFirstName('test3');
-        $profile->setLastName('test4');
-        $profile->setHomePhone('test5');
-        $profile->setCellPhone('test6');
-        $profile->setAltPhone('test7');
+        // Create profile form
+        $form = $this->createForm(new ProfileForm(), $profile);        
 
-        $form = $this->createFormBuilder()
-            ->add('email', 'text')
-            ->add('firstName', 'text')
-            ->add('lastName', 'text')
-            ->add('homePhone', 'text')
-            ->add('cellPhone', 'text')
-            ->add('altPhone', 'text')
-            ->add('password', 'text')
-            ->add('passwordConfirm', 'text')
-            ->add('save', 'submit')
-            ->getForm();
+        // Handling request from contacts page
+        $form->handleRequest($request);  
 
-        return $this->render('UmbrellaAdminBundle:pages:profile.html.twig', array('formProfile' => $form->createView()));
+        // Valid contacts form
+        if (! $form->isValid())
+        {
+            // Render contacts page whidth  valid errors   
+            $content = $this->renderView('UmbrellaAdminBundle:pages:profile.html.twig', array(
+                'form_profile' => $form->createView()
+            ));
+        }
+        else
+        {   
+            // Send email
+            $content = 'email send';
+        }
+
+        return new Response($content);
     }
 }

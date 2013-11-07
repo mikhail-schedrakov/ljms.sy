@@ -1,23 +1,23 @@
-{% extends 'UmbrellaFrontendBundle::layout.html.twig' %}
+{% extends 'UmbrellaFrontendBundle::frontendLayout.html.twig' %}
 
 {# Customize view error fields #}
-{% form_theme form_contact 'UmbrellaFrontendBundle:Form:fields.html.twig' %}
+{% form_theme form_contact 'UmbrellaAdminBundle:Form:fields.html.twig' %}
 
 {# Customize ReaCaptcha view #}
 {% form_theme form_contact 'EWZRecaptchaBundle:Form:ewz_recaptcha_widget.html.twig' %}
 
 {% block content %}
 
-	<h1>Contact Us</h1>
+    <h1>Contact Us</h1>
 
     <p><span style="font-size: small;"><strong>Lockport Junior Miss Softball</strong></span></p>
     <p>PO Box 305</p>
     <p>Lockport, IL 60441</p>
     <p>Phone: (630) 453-0166 (Scott McCarthy)</p><br />
 
-	<div class="contact_form">
-   		<form action="" method="post">
-		    <table width="100%" border="0" cellspacing="0" cellpadding="0">		    	
+    <div class="contact_form">
+        <form action="" method="post">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">             
                 
                 {# Name #}
                 <tr>
@@ -25,43 +25,43 @@
                     <td width="70%">{{ form_widget(form_contact.name, {'required': ''}) }}</td>
                 </tr>
                 <tr>
-		    		<td width="30%"></td>
-		    		<td width="100%" class='msg_err'>{{ form_errors(form_contact.name) }}</td>
-		    	</tr>
-		    	{# endName
+                    <td width="30%"></td>
+                    <td width="100%" class='msg_err'>{{ form_errors(form_contact.name) }}</td>
+                </tr>
+                {# endName
 
-		    	{# Email #}
+                {# Email #}
                 <tr>
                     <td width="30%" style="padding-top:3px; padding-bottom:5px;">Your Email * </td>
                     <td width="70%">{{ form_widget(form_contact.email, {'required': '', 'attr': {'type': 'text'}}) }}</td>
                 </tr>
                 <tr>
-		    		<td width="30%"></td>
-		    		<td width="70%" class='msg_err'>{{ form_errors(form_contact.email) }}</td>
-		    	</tr>
-		    	{# endEmail #}
+                    <td width="30%"></td>
+                    <td width="70%" class='msg_err'>{{ form_errors(form_contact.email) }}</td>
+                </tr>
+                {# endEmail #}
 
-		    	{# Subject #}
+                {# Subject #}
                 <tr>
                     <td width="30%" style="padding-top:3px; padding-bottom:5px;">Subject *</td>
                     <td width="70%" >{{ form_widget(form_contact.subject, {'required': ''}) }}</td>
                 </tr>
                 <tr>
-		    		<td width="30%"></td>
-		    		<td width="70%" class='msg_err'>{{ form_errors(form_contact.subject) }}</td>
-		    	</tr>
-		    	{# endSubject #}
+                    <td width="30%"></td>
+                    <td width="70%" class='msg_err'>{{ form_errors(form_contact.subject) }}</td>
+                </tr>
+                {# endSubject #}
 
-		    	{# Message #}
+                {# Message #}
                 <tr>
                     <td width="30%" valign="top" style="padding-top:5px;">Your Message *</td>                    
                     <td width="70%" style="padding-top:5px;">{{ form_widget(form_contact.message, {'required': '', 'attr': {}}) }}</td>
                 </tr>
                 <tr>
-		    		<td width="30%"></td>
-		    		<td width="70%" class='msg_err'>{{ form_errors(form_contact.message) }}</td>
-		    	</tr>
-		    	{# endMessage #}
+                    <td width="30%"></td>
+                    <td width="70%" class='msg_err'>{{ form_errors(form_contact.message) }}</td>
+                </tr>
+                {# endMessage #}
 
                 {# Recaptcha #}
                 <tr>
@@ -80,7 +80,7 @@
                 </tr>
             </table>
             {{ form_end(form_contact) }}
-		</form>
+        </form>
     </div>
 
     <br />

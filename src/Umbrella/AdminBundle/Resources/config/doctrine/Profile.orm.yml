@@ -8,24 +8,31 @@
             generator:
                 strategy: AUTO
         email:
+            notnull: true
             type: string
             lenght: 255
         password:
+            notnull: true
             type: string
             lenght: 32
         firstName:
+            notnull: true
             type: string
             lenght: 255
         lastName:
+            notnull: true
             type: string
             lenght: 255
         homePhone:
+            notnull: true
             type: string
             lenght: 255
         cellPhone:
+            notnull: true
             type: string
             lenght: 255
         altPhone:
+            notnull: false
             type: string
             lenght: 255
     lifecycleCallbacks: {  }
