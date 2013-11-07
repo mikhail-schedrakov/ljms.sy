@@ -129,10 +129,8 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
         echo "
                     <div class=\"message_container\">
                     \t";
-        // line 66
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "password"), 'errors');
-        echo "
-               \t\t </div>
+        // line 67
+        echo "               \t\t </div>
                     <label>Confirm Password *</label>
                     ";
         // line 69
@@ -141,7 +139,7 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
                     <div class=\"message_container\">
 \t                    ";
         // line 71
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getContext($context, "form_profile"), "password"), 'errors');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getContext($context, "form_profile"), "password"), "first"), 'errors');
         echo "
 \t                </div>
                 </div>
@@ -180,6 +178,6 @@ class __TwigTemplate_0a2838c62955f5f894f581dd569fc5385524f037b0b43b3c7d311442013
 
     public function getDebugInfo()
     {
-        return array (  159 => 80,  155 => 79,  144 => 71,  139 => 69,  133 => 66,  128 => 64,  123 => 61,  117 => 57,  111 => 54,  107 => 52,  101 => 48,  95 => 45,  91 => 43,  85 => 39,  79 => 36,  75 => 34,  69 => 30,  63 => 27,  59 => 25,  53 => 21,  47 => 18,  43 => 16,  33 => 7,  30 => 6,  25 => 4,);
+        return array (  157 => 80,  153 => 79,  142 => 71,  137 => 69,  133 => 67,  128 => 64,  123 => 61,  117 => 57,  111 => 54,  107 => 52,  101 => 48,  95 => 45,  91 => 43,  85 => 39,  79 => 36,  75 => 34,  69 => 30,  63 => 27,  59 => 25,  53 => 21,  47 => 18,  43 => 16,  33 => 7,  30 => 6,  25 => 4,);
     }
 }

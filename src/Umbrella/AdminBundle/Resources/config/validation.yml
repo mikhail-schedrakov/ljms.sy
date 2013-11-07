@@ -36,3 +36,10 @@ Umbrella\AdminBundle\Entity\Profile:
             - Regex: 
                 pattern: "/^([0-9-_() +*])+$/i"
                 message: "Number must be of the characters: numbers, space, - ()"
+
+        password:
+            - NotBlank:
+                message: 'Password field should not be blank.'
+            - Length:
+                min: 5
+                max: 255

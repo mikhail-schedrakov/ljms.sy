@@ -451,6 +451,10 @@ a.button:visited {
     padding-left: 226px;
 }
 
+#password_fields .message_container p {
+    padding-left: 195px;
+} 
+
 .del_role_button {
     text-decoration : none;
     font-size : 13px;

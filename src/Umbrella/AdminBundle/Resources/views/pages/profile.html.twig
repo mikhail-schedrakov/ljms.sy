@@ -63,12 +63,12 @@
                     <label>Password *</label>
                     {{ form_widget(form_profile.password.first, {'required': false}) }}
                     <div class="message_container">
-                    	{{ form_errors(form_profile.password) }}
+                    	{# {{ form_errors(form_profile.password.first) }} #}
                		 </div>
                     <label>Confirm Password *</label>
                     {{ form_widget(form_profile.password.second, {'required': false}) }}
                     <div class="message_container">
-	                    {{ form_errors(form_profile.password) }}
+	                    {{ form_errors(form_profile.password.first) }}
 	                </div>
                 </div>
                 <div>

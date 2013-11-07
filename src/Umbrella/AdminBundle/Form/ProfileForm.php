@@ -19,7 +19,8 @@ class ProfileForm extends AbstractType
                'first_name'  => 'first',
                'second_name' => 'second',
                'type'        => 'password',
-            ))        
+               'invalid_message' => 'Password values ​​are not match.'
+            ))
             ->add('save', 'submit');
     }
 
